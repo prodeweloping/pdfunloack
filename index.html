@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
   <!-- SEO Meta -->
-  <title>PDF Password Unlock Tool | Free Online PDF Unlocker</title>
-  <meta name="description" content="Unlock password-protected PDF files instantly in your browser. No upload to server, secure and fast. Drag & drop support.">
-  <meta name="keywords" content="PDF unlock, remove PDF password, free PDF tool, unlock PDF online, pdf-lib, browser PDF">
-  <link rel="canonical" href="https://pdfunlock.tool">
-  <!-- Font & Icons (Google Material Symbols) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
+  <title>PDF Password Unlock Tool | Pro Toolss</title>
+  <meta name="description" content="Unlock password-protected PDF files instantly in your browser. No upload to server, secure and fast. Drag & drop support." />
+  <meta name="keywords" content="PDF unlock, remove PDF password, free PDF tool, unlock PDF online, pdf-lib, browser PDF" />
+  <link rel="canonical" href="https://pdfunlock.tool" />
+  <!-- Favicon (from URL) -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/FkJPMZ8r/Chat-GPT-Image-Jun-18-2026-07-58-22-AM.png" />
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    /* ----- global reset & base ----- */
     * {
       margin: 0;
       padding: 0;
@@ -23,10 +27,70 @@
       background: #f6f9fc;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      padding-top: 75px; /* fixed navbar height */
+      color: #0b1a2a;
+    }
+
+    /* ===== NAVBAR (fixed, from your code, enhanced) ===== */
+    .new-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+      padding: 12px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 75px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 800;
+    }
+    .logo-blue { color: #007BFF; }
+    .logo-orange { color: #FF6F00; }
+
+    .home-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+    }
+    .home-btn .lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .home-btn .lines span {
+      width: 24px;
+      height: 3px;
+      background: #1e293b;
+      border-radius: 10px;
+    }
+    .home-btn .label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ===== MAIN CARD (PDF tool) ===== */
+    main {
+      flex: 1;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      color: #0b1a2a;
     }
 
     .card {
@@ -37,6 +101,7 @@
       padding: 2.5rem 2rem;
       box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.25), 0 8px 24px -6px rgba(0, 0, 0, 0.05);
       transition: box-shadow 0.2s;
+      margin: 0 auto;
     }
 
     h1 {
@@ -48,7 +113,6 @@
       gap: 0.5rem;
       margin-bottom: 0.3rem;
     }
-
     h1 span {
       background: #1a5cff;
       color: white;
@@ -69,6 +133,7 @@
       line-height: 1.5;
     }
 
+    /* drop zone */
     .drop-zone {
       border: 2px dashed #d0dbe8;
       border-radius: 2rem;
@@ -80,38 +145,34 @@
       position: relative;
       margin-bottom: 1.8rem;
     }
-
     .drop-zone.drag-over {
       border-color: #1a5cff;
       background: #eef4ff;
       transform: scale(1.01);
     }
-
     .drop-zone .icon {
       font-size: 3.6rem;
       color: #1a5cff;
       display: block;
       margin-bottom: 0.6rem;
     }
-
     .drop-zone p {
       font-weight: 500;
       color: #1e2e3f;
     }
-
     .drop-zone .browse {
       color: #1a5cff;
       font-weight: 600;
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-
     .drop-zone .hint {
       font-size: 0.85rem;
       color: #6b7d8f;
       margin-top: 0.5rem;
     }
 
+    /* file name */
     .file-name {
       display: flex;
       align-items: center;
@@ -125,11 +186,9 @@
       color: #0b1a2a;
       word-break: break-all;
     }
-
     .file-name .material-symbols-outlined {
       color: #1a5cff;
     }
-
     .file-name .remove-file {
       margin-left: auto;
       background: none;
@@ -141,18 +200,17 @@
       align-items: center;
       transition: color 0.2s;
     }
-
     .file-name .remove-file:hover {
       color: #d03a3a;
     }
 
+    /* password input */
     .input-group {
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
       margin: 1.5rem 0 1.8rem;
     }
-
     .input-group label {
       font-weight: 600;
       font-size: 0.95rem;
@@ -160,7 +218,6 @@
       align-items: center;
       gap: 0.4rem;
     }
-
     .password-wrapper {
       display: flex;
       background: white;
@@ -170,12 +227,10 @@
       transition: border 0.2s, box-shadow 0.2s;
       align-items: center;
     }
-
     .password-wrapper:focus-within {
       border-color: #1a5cff;
       box-shadow: 0 0 0 4px rgba(26, 92, 255, 0.15);
     }
-
     .password-wrapper input {
       border: none;
       padding: 0.9rem 0.2rem;
@@ -185,11 +240,9 @@
       outline: none;
       font-family: 'Inter', sans-serif;
     }
-
     .password-wrapper input::placeholder {
       color: #a8b8c9;
     }
-
     .password-wrapper button {
       background: #1a5cff;
       border: none;
@@ -207,20 +260,18 @@
       font-family: 'Inter', sans-serif;
       letter-spacing: 0.3px;
     }
-
     .password-wrapper button:hover {
       background: #0f4ad0;
     }
-
     .password-wrapper button:active {
       transform: scale(0.96);
     }
-
     .password-wrapper button:disabled {
       opacity: 0.5;
       pointer-events: none;
     }
 
+    /* status */
     .status {
       margin: 1.2rem 0 0.2rem;
       padding: 0.8rem 1rem;
@@ -233,17 +284,14 @@
       color: #0b1a2a;
       min-height: 3.4rem;
     }
-
     .status.error {
       background: #fee9e9;
       color: #b33a3a;
     }
-
     .status.success {
       background: #e2f3e4;
       color: #1d6f2c;
     }
-
     .status .material-symbols-outlined {
       font-size: 1.4rem;
     }
@@ -257,17 +305,45 @@
       padding-top: 1.5rem;
     }
 
-    .footer-note a {
-      color: #1a5cff;
-      text-decoration: none;
-    }
-
     /* hidden file input */
-    #fileInput {
-      display: none;
+    #fileInput { display: none; }
+
+    /* ===== FOOTER (fixed bottom on mobile, yours) ===== */
+    footer {
+      background: #0b1426;
+      color: white;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+    .design-footer {
+      color: #94a3b8;
+    }
+    .highlight {
+      color: #facc15;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .highlight:hover {
+      color: #ffe066;
     }
 
-    /* responsive */
+    /* ===== responsive ===== */
+    @media (max-width: 768px) {
+      footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      body {
+        padding-bottom: 70px; /* footer height */
+      }
+    }
+
     @media (max-width: 480px) {
       .card {
         padding: 1.8rem 1.2rem;
@@ -308,64 +384,96 @@
 </head>
 <body>
 
-<div class="card" role="main">
-  <h1>
-    🔓 PDF Unlock
-    <span>Tool</span>
-  </h1>
-  <div class="subhead">
-    Remove password from encrypted PDFs — everything stays in your browser.
+<!-- ===== NAVBAR (exactly as provided, plus home link) ===== -->
+<nav class="new-nav">
+  <div class="logo">
+    <span class="logo-blue">Pro</span>
+    <span class="logo-orange">Toolss</span>
   </div>
 
-  <!-- Drop Zone -->
-  <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Drop or click to upload PDF">
-    <span class="material-symbols-outlined icon">upload_file</span>
-    <p><span class="browse">Click to browse</span> or drag &amp; drop your PDF</p>
-    <div class="hint">Supports encrypted PDF files (.pdf)</div>
-  </div>
+  <button id="homeBtn" class="home-btn">
+    <div class="lines">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <span class="label">Home</span>
+  </button>
+</nav>
 
-  <!-- hidden file input -->
-  <input type="file" id="fileInput" accept=".pdf,application/pdf">
+<!-- ===== MAIN CONTENT: PDF UNLOCK TOOL ===== -->
+<main>
+  <div class="card" role="main">
+    <h1>
+      🔓 PDF Unlock
+      <span>Tool</span>
+    </h1>
+    <div class="subhead">
+      Remove password from encrypted PDFs — everything stays in your browser.
+    </div>
 
-  <!-- File name + remove -->
-  <div id="fileInfo" class="file-name" style="display: none;">
-    <span class="material-symbols-outlined">description</span>
-    <span id="fileNameDisplay">file.pdf</span>
-    <button class="remove-file" id="removeFileBtn" aria-label="Remove file">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-  </div>
+    <!-- Drop Zone -->
+    <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Drop or click to upload PDF">
+      <span class="material-symbols-outlined icon">upload_file</span>
+      <p><span class="browse">Click to browse</span> or drag &amp; drop your PDF</p>
+      <div class="hint">Supports encrypted PDF files (.pdf)</div>
+    </div>
 
-  <!-- Password input -->
-  <div class="input-group">
-    <label for="passwordInput">
-      <span class="material-symbols-outlined" style="font-size:1.2rem;">lock</span> PDF password
-    </label>
-    <div class="password-wrapper">
-      <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="current-password">
-      <button id="unlockBtn">Unlock PDF</button>
+    <!-- hidden file input -->
+    <input type="file" id="fileInput" accept=".pdf,application/pdf">
+
+    <!-- File name + remove -->
+    <div id="fileInfo" class="file-name" style="display: none;">
+      <span class="material-symbols-outlined">description</span>
+      <span id="fileNameDisplay">file.pdf</span>
+      <button class="remove-file" id="removeFileBtn" aria-label="Remove file">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Password input -->
+    <div class="input-group">
+      <label for="passwordInput">
+        <span class="material-symbols-outlined" style="font-size:1.2rem;">lock</span> PDF password
+      </label>
+      <div class="password-wrapper">
+        <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="current-password">
+        <button id="unlockBtn">Unlock PDF</button>
+      </div>
+    </div>
+
+    <!-- Status message -->
+    <div id="statusMessage" class="status">
+      <span class="material-symbols-outlined">info</span>
+      <span id="statusText">Ready to unlock</span>
+    </div>
+
+    <div class="footer-note">
+      ⚡ Powered by <strong>pdf-lib</strong> · No file upload · 100% client-side
     </div>
   </div>
+</main>
 
-  <!-- Status message -->
-  <div id="statusMessage" class="status">
-    <span class="material-symbols-outlined">info</span>
-    <span id="statusText">Ready to unlock</span>
+<!-- ===== FOOTER (exactly as provided) ===== -->
+<footer>
+  <div class="design-footer">
+    Design by
+    <a href="https://www.protoolss.online" target="_blank" class="highlight">
+      Pro Toolss
+    </a>
   </div>
+</footer>
 
-  <div class="footer-note">
-    ⚡ Powered by <strong>pdf-lib</strong> · No file upload · 100% client-side
-  </div>
-</div>
-
+<!-- ===== SCRIPTS ===== -->
 <!-- pdf-lib from CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js">
+</script>
 
 <script>
   (function() {
     "use strict";
 
-    // ----- DOM refs -----
+    // ----- DOM refs (PDF tool) -----
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const fileInfo = document.getElementById('fileInfo');
@@ -377,22 +485,22 @@
     const statusText = document.getElementById('statusText');
 
     // ----- state -----
-    let currentFile = null;        // File object
+    let currentFile = null;
     let isProcessing = false;
 
     // ----- helpers -----
     function setStatus(message, type = 'info') {
       statusText.textContent = message;
       statusMessage.className = 'status';
+      const icon = statusMessage.querySelector('.material-symbols-outlined');
       if (type === 'error') {
         statusMessage.classList.add('error');
-        statusMessage.querySelector('.material-symbols-outlined').textContent = 'error';
+        icon.textContent = 'error';
       } else if (type === 'success') {
         statusMessage.classList.add('success');
-        statusMessage.querySelector('.material-symbols-outlined').textContent = 'check_circle';
+        icon.textContent = 'check_circle';
       } else {
-        // info
-        statusMessage.querySelector('.material-symbols-outlined').textContent = 'info';
+        icon.textContent = 'info';
       }
     }
 
@@ -417,10 +525,9 @@
       passwordInput.value = '';
     }
 
-    // ----- handle file selection -----
+    // ----- handle file -----
     function handleFile(file) {
       if (!file) return;
-      // validate PDF
       if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
         setStatus('Please select a valid PDF file.', 'error');
         return;
@@ -436,59 +543,45 @@
       passwordInput.focus();
     }
 
-    // ----- unlock logic using pdf-lib -----
+    // ----- unlock logic -----
     async function unlockPdf(file, password) {
       const arrayBuffer = await file.arrayBuffer();
-
       let pdfDoc;
       try {
-        // Try to load with password
         pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { password });
       } catch (err) {
-        // If error includes "Invalid password" or similar
         if (err.message && (err.message.includes('password') || err.message.includes('encrypted'))) {
           throw new Error('Incorrect password. Please try again.');
         } else {
           throw new Error('Failed to load PDF. It may be corrupted or not password-protected.');
         }
       }
-
-      // If loaded, document is decrypted. Remove encryption by saving without password
       const pdfBytes = await pdfDoc.save();
-
-      // Create a new Blob & download
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      // remove '-locked' from filename if present, else append '-unlocked'
       let baseName = file.name.replace(/\.pdf$/i, '');
-      const unlockedName = `${baseName}-unlocked.pdf`;
-      link.download = unlockedName;
+      link.download = baseName + '-unlocked.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-
       return true;
     }
 
-    // ----- main unlock action -----
     async function handleUnlock() {
       if (isProcessing) return;
-
       if (!currentFile) {
         setStatus('Please select a PDF file first.', 'error');
         return;
       }
-
       const password = passwordInput.value.trim();
       if (password === '') {
         setStatus('Please enter the PDF password.', 'error');
         return;
       }
 
-      // start
       isProcessing = true;
       unlockBtn.disabled = true;
       setStatus('Unlocking... please wait.', 'info');
@@ -497,33 +590,21 @@
       try {
         await unlockPdf(currentFile, password);
         setStatus('✅ PDF unlocked successfully! Download started.', 'success');
-        // after success, keep file but clear password field for security
         passwordInput.value = '';
-        // we keep file loaded so user can re-unlock with different password if needed
       } catch (err) {
         setStatus(`❌ ${err.message || 'Unlock failed.'}`, 'error');
       } finally {
         isProcessing = false;
         unlockBtn.disabled = false;
-        if (statusMessage.classList.contains('success')) {
-          // keep success
-        } else if (statusMessage.classList.contains('error')) {
-          // keep error
-        } else {
-          resetStatus();
-        }
       }
     }
 
-    // ----- event listeners -----
-
-    // 1. Click on drop zone -> trigger file input
+    // ----- event listeners (PDF tool) -----
     dropZone.addEventListener('click', (e) => {
       if (e.target.closest('.remove-file')) return;
       fileInput.click();
     });
 
-    // 2. Drag and drop
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropZone.classList.add('drag-over');
@@ -535,30 +616,25 @@
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
       dropZone.classList.remove('drag-over');
-      const files = e.dataTransfer.files;
-      if (files.length > 0) {
-        handleFile(files[0]);
+      if (e.dataTransfer.files.length > 0) {
+        handleFile(e.dataTransfer.files[0]);
       }
     });
 
-    // 3. File input change
     fileInput.addEventListener('change', (e) => {
       if (fileInput.files.length > 0) {
         handleFile(fileInput.files[0]);
       }
     });
 
-    // 4. Remove file button
     removeFileBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       clearFile();
       setStatus('File removed.', 'info');
     });
 
-    // 5. Unlock button
     unlockBtn.addEventListener('click', handleUnlock);
 
-    // 6. Enter key in password field
     passwordInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -566,15 +642,12 @@
       }
     });
 
-    // 7. Extra: if user clicks on file info (remove btn prevented)
     fileInfo.addEventListener('click', (e) => {
-      // if click on file info but not on remove button, we could re-trigger upload? no, just focus password
       if (!e.target.closest('.remove-file')) {
         passwordInput.focus();
       }
     });
 
-    // 8. Accessibility: drop zone can be activated with keyboard (Enter/Space)
     dropZone.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -582,19 +655,21 @@
       }
     });
 
-    // 9. Reset status on any interaction that clears error (optional)
     passwordInput.addEventListener('focus', () => {
       if (statusMessage.classList.contains('error')) {
         resetStatus();
       }
     });
 
-    // 10. init status
     resetStatus();
 
-    // 11. if user drags file over document body (prevent default)
     document.addEventListener('dragover', (e) => e.preventDefault());
     document.addEventListener('drop', (e) => e.preventDefault());
+
+    // ----- Home button (navbar) -----
+    document.getElementById('homeBtn').addEventListener('click', function() {
+      window.location.href = 'https://www.protoolss.online';
+    });
 
   })();
 </script>
